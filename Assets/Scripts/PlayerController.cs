@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] float HoldingForce = 1f;
 	[SerializeField] ForceMode HoldingMode = ForceMode.Force;
 
-	bool IsInteractionKeyPressed => Input.GetKeyDown(KeyCode.F);
+	bool IsInteractionKeyPressed => Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.Mouse0);
 
 	Grabbable _currentlyBeingHeld;
 	void HandleInteraction(float delta)

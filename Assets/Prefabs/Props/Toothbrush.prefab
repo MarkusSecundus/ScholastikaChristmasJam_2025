@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1520022431176495923}
   - component: {fileID: 4108214513885885694}
   - component: {fileID: 4971637639796654510}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Toothbrush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,15 +85,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: c5b3dcf66c5c5e443a5920b3d39db6eb, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.6415794
+      value: 1.431457
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c5b3dcf66c5c5e443a5920b3d39db6eb, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.6415794
+      value: 1.431457
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c5b3dcf66c5c5e443a5920b3d39db6eb, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.6415794
+      value: 1.431457
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c5b3dcf66c5c5e443a5920b3d39db6eb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -101,11 +101,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c5b3dcf66c5c5e443a5920b3d39db6eb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.070106
+      value: 0.064367
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c5b3dcf66c5c5e443a5920b3d39db6eb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.0034428
+      value: -0.003161
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c5b3dcf66c5c5e443a5920b3d39db6eb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -135,9 +135,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c5b3dcf66c5c5e443a5920b3d39db6eb, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c5b3dcf66c5c5e443a5920b3d39db6eb, type: 3}
       propertyPath: m_Name
       value: toothbrush_bathroom_v1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c5b3dcf66c5c5e443a5920b3d39db6eb, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
