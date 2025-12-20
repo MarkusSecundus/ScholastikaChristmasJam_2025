@@ -1,0 +1,180 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4791817903003533953
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1520022431176495923}
+  - component: {fileID: 4108214513885885694}
+  - component: {fileID: 4971637639796654510}
+  m_Layer: 0
+  m_Name: Toothbrush
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1520022431176495923
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4791817903003533953}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.375, y: 3.154, z: 23.857}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5226593934558231782}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &4108214513885885694
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4791817903003533953}
+  serializedVersion: 4
+  m_Mass: 0.3
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &4971637639796654510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4791817903003533953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff60cd873e493246a46e5a52a210b0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GrabPoint: {fileID: 1520022431176495923}
+  Rigidbody: {fileID: 0}
+--- !u!1001 &5693163459037928205
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1520022431176495923}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: c5b3dcf66c5c5e443a5920b3d39db6eb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.6415794
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c5b3dcf66c5c5e443a5920b3d39db6eb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.6415794
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c5b3dcf66c5c5e443a5920b3d39db6eb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.6415794
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c5b3dcf66c5c5e443a5920b3d39db6eb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c5b3dcf66c5c5e443a5920b3d39db6eb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.070106
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c5b3dcf66c5c5e443a5920b3d39db6eb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0034428
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c5b3dcf66c5c5e443a5920b3d39db6eb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c5b3dcf66c5c5e443a5920b3d39db6eb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c5b3dcf66c5c5e443a5920b3d39db6eb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c5b3dcf66c5c5e443a5920b3d39db6eb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c5b3dcf66c5c5e443a5920b3d39db6eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c5b3dcf66c5c5e443a5920b3d39db6eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c5b3dcf66c5c5e443a5920b3d39db6eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c5b3dcf66c5c5e443a5920b3d39db6eb, type: 3}
+      propertyPath: m_Name
+      value: toothbrush_bathroom_v1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c5b3dcf66c5c5e443a5920b3d39db6eb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1112306976012668653}
+  m_SourcePrefab: {fileID: 100100000, guid: c5b3dcf66c5c5e443a5920b3d39db6eb, type: 3}
+--- !u!1 &4882825386057901660 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c5b3dcf66c5c5e443a5920b3d39db6eb, type: 3}
+  m_PrefabInstance: {fileID: 5693163459037928205}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1112306976012668653
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4882825386057901660}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.02841749, y: 0.24921973, z: 0.03293353}
+  m_Center: {x: 0, y: -0.08365549, z: 0.004107893}
+--- !u!4 &5226593934558231782 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c5b3dcf66c5c5e443a5920b3d39db6eb, type: 3}
+  m_PrefabInstance: {fileID: 5693163459037928205}
+  m_PrefabAsset: {fileID: 0}
