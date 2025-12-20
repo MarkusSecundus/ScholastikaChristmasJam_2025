@@ -1,9 +1,12 @@
 using UnityEngine;
 
+
+
 public abstract class IInteractable : MonoBehaviour
 {
 	public abstract bool CanInteract();
-	public abstract void DoInteract();
+
+	public virtual void OnHover() { }
 
 	public static IInteractable Get(Collider col)
 	{
@@ -13,7 +16,7 @@ public abstract class IInteractable : MonoBehaviour
 	}
 }
 
-public abstract class IGrabbable : MonoBehaviour
+public abstract class IActionable : IInteractable
 {
-	public abstract bool CanGrab();
+	public abstract void DoInteract();
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Door : IInteractable
+public class Door : IActionable
 {
 	[SerializeField] Quaternion _openRotation;
 	[SerializeField] float InteractionDuration = 1f;

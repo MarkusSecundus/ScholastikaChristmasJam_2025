@@ -71,6 +71,15 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] float _raycastDistance = 1f;
 	[SerializeField] int raycastMask = 0;
 	[SerializeField] RectTransform PressF_Label;
+
+	[SerializeField] Transform _holdPoint;
+	[SerializeField] float ThrowForce = 1f;
+	[SerializeField] float HoldingForce = 1f;
+	[SerializeField] ForceMode HoldingMode = ForceMode.Force;
+
+	bool IsInteractionKeyPressed => Input.GetKeyDown(KeyCode.F);
+
+	Grabbable _currentlyBeingHeld;
 	void HandleInteraction(float delta)
 	{
 		var raycastBase = _raycastDirection.parent.position;
@@ -78,16 +87,39 @@ public class PlayerController : MonoBehaviour
 
 		bool canInteract = false;
 
-		
-		if (Physics.Raycast(raycastBase, raycastDirection, out var hitInfo, _raycastDistance, raycastMask)){
+		if (_currentlyBeingHeld) 
+		{
+			if (IsInteractionKeyPressed)
+			{
+				_currentlyBeingHeld.OnGrabEnd();
+				_currentlyBeingHeld.Rigidbody.AddForce(raycastDirection * ThrowForce, ForceMode.Impulse);
+				_currentlyBeingHeld = null;
+			}
+			else
+			{
+				var moveDir = _holdPoint.position - _currentlyBeingHeld.GrabPoint.position;
+				//_currentlyBeingHeld.Rigidbody.SteerToVelocity(moveDir, HoldingForce, HoldingMode);
+				_currentlyBeingHeld.transform.position += moveDir * HoldingForce * delta;
+			}
+		}
+		else if (Physics.Raycast(raycastBase, raycastDirection, out var hitInfo, _raycastDistance, raycastMask)){
 			var interactable = IInteractable.Get(hitInfo.collider);
 			//if(hitInfo.collider) Debug.Log($"Raycast hit: {hitInfo.collider}", hitInfo.collider);
 			if (interactable && interactable.CanInteract())
 			{
 				canInteract = true;
-				if (Input.GetKeyDown(KeyCode.F))
+				interactable.OnHover();
+				if (IsInteractionKeyPressed)
 				{
-					interactable.DoInteract();
+					if (interactable is IActionable actionable)
+					{
+						actionable.DoInteract();
+					}
+					else if (interactable is Grabbable grabbable)
+					{
+						_currentlyBeingHeld = grabbable;
+						_currentlyBeingHeld.OnGrabStart();
+					}
 				}
 			}
 		}
