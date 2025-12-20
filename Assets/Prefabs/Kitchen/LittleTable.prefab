@@ -290,6 +290,7 @@ MonoBehaviour:
   GrabPoint: {fileID: 8456787994944208533}
   ThrowForceMultiplier: 1.5
   HoldDistanceMultiplier: 1
+  ByPhysics: 0
   Rigidbody: {fileID: 0}
 --- !u!1 &1612215445582075478
 GameObject:
@@ -1230,6 +1231,7 @@ GameObject:
   - component: {fileID: 3924881802748760662}
   - component: {fileID: 6758954499355678187}
   - component: {fileID: 772491473744588100}
+  - component: {fileID: 1921480441239308072}
   m_Layer: 0
   m_Name: Cube.004
   m_TagString: Untagged
@@ -1305,6 +1307,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &1921480441239308072
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7938346596496331454}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.0012306503
+  m_Height: 0.0006248609
+  m_Direction: 1
+  m_Center: {x: -0.00020765196, y: -0.000037474754, z: 0.011562285}
 --- !u!1 &8027229941222762921
 GameObject:
   m_ObjectHideFlags: 0

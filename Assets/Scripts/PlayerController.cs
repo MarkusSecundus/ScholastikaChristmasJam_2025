@@ -82,12 +82,21 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] Transform _holdPoint;
 	[SerializeField] float ThrowForce = 1f;
 	[SerializeField] float HoldingForce = 1f;
-	//[SerializeField] ForceMode HoldingMode = ForceMode.Force;
+	[SerializeField] float ForceHoldingForce = 1f;
+	[SerializeField] ForceMode ForceHoldingMode = ForceMode.Force;
 
 	bool IsInteractionKeyPressed => Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.Mouse0);
+	bool IsInteractionKeyBeingPressed => Input.GetKey(KeyCode.F) || Input.GetKey(KeyCode.Mouse0);
 	bool IsCrouchKeyPressed => Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.C);
 
 	Grabbable _currentlyBeingHeld;
+
+	Vector3 _hitPointLocal;
+	Vector3 getGrabPoint()
+	{
+		//if (_currentlyBeingHeld.GrabPoint) return _currentlyBeingHeld.GrabPoint.position;
+		return _currentlyBeingHeld.transform.LocalToGlobal(_hitPointLocal);
+	}
 	void HandleInteraction(float delta)
 	{
 		var raycastBase = _raycastDirection.parent.position;
@@ -97,7 +106,7 @@ public class PlayerController : MonoBehaviour
 
 		if (_currentlyBeingHeld) 
 		{
-			if (IsInteractionKeyPressed)
+			if (_currentlyBeingHeld.WhenHeld? (!IsInteractionKeyBeingPressed) : IsInteractionKeyPressed)
 			{
 				_currentlyBeingHeld.OnGrabEnd();
 				_currentlyBeingHeld.Rigidbody.AddForce(raycastDirection * ThrowForce * _currentlyBeingHeld.ThrowForceMultiplier, ForceMode.Impulse);
@@ -106,14 +115,15 @@ public class PlayerController : MonoBehaviour
 			else
 			{
 				var holdPoint = _holdPoint.parent.position + (_holdPoint.position - _holdPoint.parent.position) * _currentlyBeingHeld.HoldDistanceMultiplier;
-				var moveDir = holdPoint - _currentlyBeingHeld.GrabPoint.position;
-				//_currentlyBeingHeld.Rigidbody.SteerToVelocity(moveDir, HoldingForce, HoldingMode);
-				_currentlyBeingHeld.transform.position += moveDir * HoldingForce * delta;
+				var moveDir = holdPoint - getGrabPoint();
+				if(_currentlyBeingHeld.ByPhysics)
+					_currentlyBeingHeld.Rigidbody.SteerToVelocity(moveDir, ForceHoldingForce, ForceHoldingMode);
+				else
+					_currentlyBeingHeld.transform.position += moveDir * HoldingForce * delta;
 			}
 		}
 		else if (Physics.Raycast(raycastBase, raycastDirection, out var hitInfo, _raycastDistance, raycastMask)){
 			var interactable = IInteractable.Get(hitInfo.collider);
-			//if(hitInfo.collider) Debug.Log($"Raycast hit: {hitInfo.collider}", hitInfo.collider);
 			if (interactable && interactable.CanInteract())
 			{
 				canInteract = true;
@@ -128,6 +138,7 @@ public class PlayerController : MonoBehaviour
 					{
 						_currentlyBeingHeld = grabbable;
 						_currentlyBeingHeld.OnGrabStart();
+						_hitPointLocal = _currentlyBeingHeld.transform.GlobalToLocal(hitInfo.point);
 					}
 				}
 			}

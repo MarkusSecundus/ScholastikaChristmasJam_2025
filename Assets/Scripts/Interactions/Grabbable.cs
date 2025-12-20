@@ -10,21 +10,26 @@ public class Grabbable : IInteractable
 	public Transform GrabPoint;
 	public float ThrowForceMultiplier = 1.0f;
 	public float HoldDistanceMultiplier = 1.0f;
+	public bool ByPhysics = false;
+	public bool WhenHeld = false;
 
 	[DoNotSerialize]public Rigidbody Rigidbody;
 
 	public void OnGrabStart()
 	{
 		CallInteractionHooks();
-		this.Rigidbody.isKinematic = true;
-		foreach(var joint in GetComponents<Joint>())
+		if (! ByPhysics)
 		{
-			Destroy(joint);
+			this.Rigidbody.isKinematic = true;
+			foreach (var joint in GetComponents<Joint>())
+			{
+				Destroy(joint);
+			}
 		}
 	}
 	public void OnGrabEnd()
 	{
-		this.Rigidbody.isKinematic = false;
+		if(! ByPhysics) this.Rigidbody.isKinematic = false;
 	}
 
 	private void Start()
