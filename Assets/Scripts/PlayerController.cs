@@ -8,15 +8,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 	[System.Serializable]
-	public class InputMapping
-	{
-		public KeyCode Jump = KeyCode.None;
-		public string WalkForwardBackward = "Vertical";
-		public string StrafeLeftRight = "Horizontal";
-		public string LookUpDown = "Mouse Y";
-		public string RotateLeftRight = "Mouse X";
-	}
-	[System.Serializable]
 	public class InputMultipliers
 	{
 		public float WalkSpeed = 1f;
@@ -26,8 +17,6 @@ public class PlayerController : MonoBehaviour
 
 	public Transform CameraToUse;
 
-	//private new Rigidbody rigidbody;
-	public InputMapping Mapping = new InputMapping();
 	public InputMultipliers Tweaks = new InputMultipliers();
 
 	public readonly struct MovementDirectionBasesList
@@ -46,17 +35,15 @@ public class PlayerController : MonoBehaviour
 	CharacterController _char;
 	void Start()
 	{
+		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
 		_char = GetComponent<CharacterController>();
-		InitLooking();
 	}
 
-	void LateUpdate()
+	void Update()
 	{
 		DoHandleInputs(Time.deltaTime);
-	}
-	void FixedUpdate()
-	{
-		DoFixedMoveStep(Time.fixedDeltaTime);
+		HandleInteraction(Time.deltaTime);
 	}
 
 
@@ -80,16 +67,34 @@ public class PlayerController : MonoBehaviour
 
 	[SerializeField] Vector3 _rotationBase = Vector3.up;
 
-
-	void DoFixedMoveStep(float delta)
+	[SerializeField] Transform _raycastDirection;
+	[SerializeField] float _raycastDistance = 1f;
+	[SerializeField] int raycastMask = 0;
+	[SerializeField] RectTransform PressF_Label;
+	void HandleInteraction(float delta)
 	{
-	}
+		var raycastBase = _raycastDirection.parent.position;
+		var raycastDirection = _raycastDirection.position - raycastBase;
 
+		bool canInteract = false;
 
-
-	Vector3 cameraRotation;
-	void InitLooking()
-	{
-		cameraRotation = CameraToUse.transform.rotation.eulerAngles;
+		
+		if (Physics.Raycast(raycastBase, raycastDirection, out var hitInfo, _raycastDistance, raycastMask)){
+			var interactable = IInteractable.Get(hitInfo.collider);
+			//if(hitInfo.collider) Debug.Log($"Raycast hit: {hitInfo.collider}", hitInfo.collider);
+			if (interactable && interactable.CanInteract())
+			{
+				canInteract = true;
+				if (Input.GetKeyDown(KeyCode.F))
+				{
+					interactable.DoInteract();
+				}
+			}
+		}
+		else
+		{
+			//Debug.Log($"no hit");
+		}
+			PressF_Label.gameObject.SetActive(canInteract);
 	}
 }
