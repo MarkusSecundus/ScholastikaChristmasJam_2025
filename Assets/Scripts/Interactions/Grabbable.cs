@@ -16,6 +16,10 @@ public class Grabbable : IInteractable
 	public void OnGrabStart()
 	{
 		this.Rigidbody.isKinematic = true;
+		foreach(var joint in GetComponents<Joint>())
+		{
+			Destroy(joint);
+		}
 	}
 	public void OnGrabEnd()
 	{
