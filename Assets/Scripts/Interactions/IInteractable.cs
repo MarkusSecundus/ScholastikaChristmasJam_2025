@@ -4,6 +4,14 @@ using UnityEngine;
 
 public abstract class IInteractable : MonoBehaviour
 {
+	protected void CallInteractionHooks()
+	{
+		foreach(var hook in GetComponentsInChildren<InteractionHook>())
+		{
+			if (hook.isActiveAndEnabled)
+				hook.Hook?.Invoke();
+		}
+	}
 	public abstract bool CanInteract();
 
 	public virtual void OnHover() { }
@@ -18,5 +26,10 @@ public abstract class IInteractable : MonoBehaviour
 
 public abstract class IActionable : IInteractable
 {
-	public abstract void DoInteract();
+	public void DoInteract()
+	{
+		CallInteractionHooks();
+		DoInteract_impl();
+	}
+	protected abstract void DoInteract_impl();
 }

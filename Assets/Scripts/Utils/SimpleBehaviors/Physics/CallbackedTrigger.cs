@@ -1,9 +1,11 @@
+using MarkusSecundus.Utils.Datastructs;
 using MarkusSecundus.Utils.Extensions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using static Codice.Client.Common.EventTracking.TrackFeatureUseEvent.Features.DesktopGUI.Filters;
 using callback = UnityEngine.Events.UnityAction<UnityEngine.Collider>;
 
 
@@ -14,6 +16,8 @@ namespace MarkusSecundus.Utils.Behaviors.Physics
     /// </summary>
     public class CallbackedTrigger : MonoBehaviour
     {
+        public string[] TagWhitelist;
+
         public bool ListenToTriggerEvents = true;
         public bool ListenToCollisionEvents = false;
 
@@ -72,22 +76,24 @@ namespace MarkusSecundus.Utils.Behaviors.Physics
             return this;
         }
 
+        bool _isTheRightTarget(Collider other) => TagWhitelist.Length <= 0 || TagWhitelist.Contains(other.tag) || (other.attachedRigidbody && TagWhitelist.Contains(other.attachedRigidbody.tag));
+
         void OnTriggerEnter(Collider other)
         {
-            if(ListenToTriggerEvents) OnEnter?.Invoke(other);
+            if(ListenToTriggerEvents && _isTheRightTarget(other)) OnEnter?.Invoke(other);
         }
         void OnTriggerExit(Collider other)
         {
-            if(ListenToTriggerEvents) OnExit?.Invoke(other);
+            if(ListenToTriggerEvents && _isTheRightTarget(other)) OnExit?.Invoke(other);
         }
 
         private void OnCollisionEnter(Collision collision)
         {
-            if(ListenToCollisionEvents) OnEnter?.Invoke(collision.collider);
+            if(ListenToCollisionEvents && _isTheRightTarget(collision.collider)) OnEnter?.Invoke(collision.collider);
         }
         private void OnCollisionExit(Collision collision)
         {
-            if(ListenToCollisionEvents) OnExit?.Invoke(collision.collider);
+            if(ListenToCollisionEvents && _isTheRightTarget(collision.collider)) OnExit?.Invoke(collision.collider);
         }
 
 		private void OnTriggerEnter2D(Collider2D collision)

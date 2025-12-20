@@ -82,9 +82,10 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] Transform _holdPoint;
 	[SerializeField] float ThrowForce = 1f;
 	[SerializeField] float HoldingForce = 1f;
-	[SerializeField] ForceMode HoldingMode = ForceMode.Force;
+	//[SerializeField] ForceMode HoldingMode = ForceMode.Force;
 
 	bool IsInteractionKeyPressed => Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.Mouse0);
+	bool IsCrouchKeyPressed => Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.C);
 
 	Grabbable _currentlyBeingHeld;
 	void HandleInteraction(float delta)
@@ -145,7 +146,7 @@ public class PlayerController : MonoBehaviour
 	bool _isInCrouch = false;
 	void HandleCrouch()
 	{
-		if (Input.GetKeyDown(KeyCode.LeftShift))
+		if (IsCrouchKeyPressed)
 		{
 			if (_crouchTween.IsNotNil() && _crouchTween.IsPlaying()) 
 				_crouchTween.Kill();

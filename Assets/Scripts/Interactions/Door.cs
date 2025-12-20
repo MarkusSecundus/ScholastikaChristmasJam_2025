@@ -16,7 +16,7 @@ public class Door : IActionable
 	public override bool CanInteract() => true;
 
 	double _lastInteractionTimestamp = float.NegativeInfinity;
-	public override void DoInteract()
+	protected override void DoInteract_impl()
 	{
 		if((_lastInteractionTimestamp + InteractionDuration) <= Time.timeAsDouble)
 		{
