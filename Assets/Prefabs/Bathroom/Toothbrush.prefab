@@ -74,6 +74,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GrabPoint: {fileID: 1520022431176495923}
+  ThrowForceMultiplier: 1
+  HoldDistanceMultiplier: 0.6
   Rigidbody: {fileID: 0}
 --- !u!1001 &5693163459037928205
 PrefabInstance:
