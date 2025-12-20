@@ -1,4 +1,5 @@
-﻿using MarkusSecundus.Utils.Behaviors.Physics;
+﻿using DG.Tweening;
+using MarkusSecundus.Utils.Behaviors.Physics;
 using MarkusSecundus.Utils.Extensions;
 using MarkusSecundus.Utils.Physics;
 using MarkusSecundus.Utils.Primitives;
@@ -31,17 +32,22 @@ public class PlayerController : MonoBehaviour
 	}
 	public MovementDirectionBasesList MovementDirectionBases => new MovementDirectionBasesList(this);
 
+	[SerializeField] Vector3 _gravity = Vector3.down* 9.81f;
 
 	CharacterController _char;
+
+	Vector3 _cameraPointDefaultLocalPosition;
 	void Start()
 	{
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
 		_char = GetComponent<CharacterController>();
+		_cameraPointDefaultLocalPosition = CameraToUse.transform.localPosition;
 	}
 
 	void Update()
 	{
+		HandleCrouch();
 		DoHandleInputs(Time.deltaTime);
 		HandleInteraction(Time.deltaTime);
 	}
@@ -56,6 +62,7 @@ public class PlayerController : MonoBehaviour
 		targetVerticalRotation = Input.GetAxis("Mouse Y") * Tweaks.LookUpDownSpeed * delta;
 		targetMovement = MovementDirectionBases.WalkForwardBackwardBase * Input.GetAxis("Vertical") * Tweaks.WalkSpeed * delta;
 		targetMovement += MovementDirectionBases.StrafeLeftRightBase * Input.GetAxis("Horizontal") * Tweaks.WalkSpeed * delta;
+		targetMovement += _gravity;
 
 		_char.Move(targetMovement);
 		_char.transform.localRotation *= Quaternion.AngleAxis(targetHorizontalRotation, _rotationBase);
@@ -92,7 +99,7 @@ public class PlayerController : MonoBehaviour
 			if (IsInteractionKeyPressed)
 			{
 				_currentlyBeingHeld.OnGrabEnd();
-				_currentlyBeingHeld.Rigidbody.AddForce(raycastDirection * ThrowForce, ForceMode.Impulse);
+				_currentlyBeingHeld.Rigidbody.AddForce(raycastDirection * ThrowForce * _currentlyBeingHeld.ThrowForceMultiplier, ForceMode.Impulse);
 				_currentlyBeingHeld = null;
 			}
 			else
@@ -128,5 +135,22 @@ public class PlayerController : MonoBehaviour
 			//Debug.Log($"no hit");
 		}
 			PressF_Label.gameObject.SetActive(canInteract);
+	}
+
+
+	[SerializeField] Transform CrouchCameraPoint;
+	[SerializeField] float CrouchAnimationDuration_seconds;
+	Tween _crouchTween;
+	bool _isInCrouch = false;
+	void HandleCrouch()
+	{
+		if (Input.GetKeyDown(KeyCode.LeftShift))
+		{
+			if (_crouchTween.IsNotNil() && _crouchTween.IsPlaying()) 
+				_crouchTween.Kill();
+			Vector3 targetPos = _isInCrouch ? _cameraPointDefaultLocalPosition : CrouchCameraPoint.localPosition;
+			_isInCrouch = !_isInCrouch;
+			_crouchTween = CameraToUse.DOLocalMove(targetPos, CrouchAnimationDuration_seconds);
+		}
 	}
 }

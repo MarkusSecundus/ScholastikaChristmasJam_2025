@@ -8,6 +8,7 @@ public class Grabbable : IInteractable
 	public override bool CanInteract() => true;
 
 	public Transform GrabPoint;
+	public float ThrowForceMultiplier = 1.0f;
 
 	[DoNotSerialize]public Rigidbody Rigidbody;
 

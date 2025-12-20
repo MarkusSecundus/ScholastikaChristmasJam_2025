@@ -90,7 +90,7 @@ Transform:
   m_GameObject: {fileID: 1698283937904737027}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.649, z: -0.001}
+  m_LocalPosition: {x: 0, y: 0.982, z: -0.001}
   m_LocalScale: {x: 0.30840603, y: 0.14286125, z: 0.2952371}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -174,12 +174,43 @@ Transform:
   m_GameObject: {fileID: 2226162907458817750}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.12, y: 0.642, z: 0.03}
+  m_LocalPosition: {x: 0, y: 0.975, z: 0.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9164965493932302953}
   - {fileID: 6416029597053065470}
+  m_Father: {fileID: 7368683165745509744}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3271555028894140018
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2998342837906275066}
+  m_Layer: 16
+  m_Name: CrouchCameraPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2998342837906275066
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3271555028894140018}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.145, z: 0.187}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 7368683165745509744}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7164607349626315559
@@ -242,7 +273,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 1.0355194, z: 0.3}
+  m_LocalScale: {x: 0.3, y: 1.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7368683165745509744}
@@ -335,6 +366,7 @@ Transform:
   - {fileID: 4293932710202736599}
   - {fileID: 531814609375973229}
   - {fileID: 6801321837645299935}
+  - {fileID: 2998342837906275066}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90.804, z: 0}
 --- !u!114 &4068322056257212502
@@ -354,6 +386,7 @@ MonoBehaviour:
     WalkSpeed: 5
     RotateSpeed: 110
     LookUpDownSpeed: 90
+  _gravity: {x: 0, y: -9.81, z: 0}
   _rotationBase: {x: 0, y: 1, z: 0}
   _raycastDirection: {fileID: 4698378170830230312}
   _raycastDistance: 5.5
@@ -363,6 +396,8 @@ MonoBehaviour:
   ThrowForce: 1
   HoldingForce: 20
   HoldingMode: 0
+  CrouchCameraPoint: {fileID: 2998342837906275066}
+  CrouchAnimationDuration_seconds: 0.5
 --- !u!143 &232336475258919721
 CharacterController:
   m_ObjectHideFlags: 0
@@ -381,7 +416,7 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 2
+  m_Height: 2.6
   m_Radius: 0.3
   m_SlopeLimit: 45
   m_StepOffset: 0.3
