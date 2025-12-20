@@ -662,6 +662,8 @@ GameObject:
   - component: {fileID: 3386930728740537710}
   - component: {fileID: 3754435996619530691}
   - component: {fileID: 8388226286336540986}
+  - component: {fileID: 1315834694382158806}
+  - component: {fileID: 7598321209432969879}
   m_Layer: 2
   m_Name: VanitySink
   m_TagString: Untagged
@@ -759,6 +761,48 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8117990001203949210, guid: 2d8a4803402c0bc43bd3641aa37bc4c8, type: 3}
+--- !u!65 &1315834694382158806
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6680170175809338773}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0204727, y: 0.021123424, z: 0.003978207}
+  m_Center: {x: 0, y: -0.000010091429, z: -0.01186732}
+--- !u!65 &7598321209432969879
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6680170175809338773}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0204727, y: 0.006721518, z: 0.024153357}
+  m_Center: {x: 0, y: 0.0093870545, z: -0.0017796829}
 --- !u!1 &7470348285636954489
 GameObject:
   m_ObjectHideFlags: 0

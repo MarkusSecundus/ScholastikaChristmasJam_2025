@@ -15,6 +15,7 @@ public class Grabbable : IInteractable
 
 	public void OnGrabStart()
 	{
+		CallInteractionHooks();
 		this.Rigidbody.isKinematic = true;
 		foreach(var joint in GetComponents<Joint>())
 		{
