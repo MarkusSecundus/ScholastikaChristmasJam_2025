@@ -9,6 +9,7 @@ public class Grabbable : IInteractable
 
 	public Transform GrabPoint;
 	public float ThrowForceMultiplier = 1.0f;
+	public float HoldDistanceMultiplier = 1.0f;
 
 	[DoNotSerialize]public Rigidbody Rigidbody;
 
