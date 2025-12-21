@@ -290,7 +290,9 @@ MonoBehaviour:
   GrabPoint: {fileID: 8456787994944208533}
   ThrowForceMultiplier: 1.5
   HoldDistanceMultiplier: 1
+  HoldForceMultiplier: 1
   ByPhysics: 0
+  WhenHeld: 0
   Rigidbody: {fileID: 0}
 --- !u!1 &1612215445582075478
 GameObject:
@@ -484,8 +486,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.022282612, y: 0.010871675, z: 0.0017886558}
-  m_Center: {x: 0.0000051534175, y: 0.0000026708842, z: 0.0073367087}
+  m_Size: {x: 0.022282612, y: 0.010871674, z: 0.0020117387}
+  m_Center: {x: 0.0000051533043, y: 0.000002670675, z: 0.0074482504}
 --- !u!1 &2266973765621548218
 GameObject:
   m_ObjectHideFlags: 0
