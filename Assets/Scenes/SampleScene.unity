@@ -3193,6 +3193,18 @@ MonoBehaviour:
           m_StringArgument: Brush your teeth
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 548215611}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Brush your teeth
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &558699806 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7888438126827293886, guid: aaf1c58fa9910014299c333638804be0, type: 3}
@@ -4281,13 +4293,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ae5f0141e45f2e4399862dbd830d2ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  perCharacter_seconds: 0.01
+  perCharacter_seconds: 0.02
   endWait_seconds: 999999
   typingSounds: []
   typingSoundsInterval: 5
   skipPrintoutKeys: 
   _textField_fld: {fileID: 1795032420}
-  _fadeDuration_seconds: 1.5
+  _fadeDuration_seconds: 0
   _renderers_fld:
   - {fileID: 801481054}
 --- !u!114 &801481054
@@ -4340,8 +4352,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ae5f0141e45f2e4399862dbd830d2ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  perCharacter_seconds: 0.01
-  endWait_seconds: 1
+  perCharacter_seconds: 0.015
+  endWait_seconds: 999999
   typingSounds: []
   typingSoundsInterval: 5
   skipPrintoutKeys: 2000000043010000
@@ -4639,6 +4651,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 863490403}
     m_Modifications:
+    - target: {fileID: 1720712552559197353, guid: 540b9cee022c1be4484e494e680c71ae, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3462945248494531531, guid: 540b9cee022c1be4484e494e680c71ae, type: 3}
       propertyPath: m_SlerpDrive.positionDamper
       value: 5000
