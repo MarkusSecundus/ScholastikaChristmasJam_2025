@@ -3227,7 +3227,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &389249920
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3267,10 +3267,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'THE
-
-
-    E N D'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 16c7631d91c3d1f49a7b2459b065ffdf, type: 2}
   m_sharedMaterial: {fileID: -1141599014398112750, guid: 16c7631d91c3d1f49a7b2459b065ffdf, type: 2}
@@ -4090,7 +4087,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &456751141
 Transform:
   m_ObjectHideFlags: 0
@@ -5796,7 +5793,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &640773303
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8066,6 +8063,7 @@ GameObject:
   m_Component:
   - component: {fileID: 880307513}
   - component: {fileID: 880307514}
+  - component: {fileID: 880307515}
   m_Layer: 0
   m_Name: D_GoingToSleep
   m_TagString: Untagged
@@ -8156,6 +8154,34 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   secondsSinceTheMiddle: 1
+--- !u!114 &880307515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880307512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad08fc1c794f23f49a90127cea1c1aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Description: 
+  ToRun:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 880307514}
+        m_TargetAssemblyTypeName: InnerMonologuePlayer, Assembly-CSharp
+        m_MethodName: DoPlay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &886193167
 GameObject:
   m_ObjectHideFlags: 0
@@ -11009,7 +11035,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1147721451
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17582,7 +17608,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1836581105
 Transform:
   m_ObjectHideFlags: 0
@@ -18636,7 +18662,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _bubbleDuration: 999999
-  _secondsPerChar: 0.5
+  _secondsPerChar: 1
   InTheMiddle:
     m_PersistentCalls:
       m_Calls: []
