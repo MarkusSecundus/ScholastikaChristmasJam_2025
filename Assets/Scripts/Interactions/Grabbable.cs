@@ -13,13 +13,18 @@ public class Grabbable : IInteractable
 	public float HoldForceMultiplier = 1.0f;
 	public bool ByPhysics = false;
 	public bool WhenHeld = false;
+	public bool DisableGrabityWhenHeld = false;
 
-	[DoNotSerialize]public Rigidbody Rigidbody;
+	public Rigidbody Rigidbody { get; private set; }
 
 	public void OnGrabStart()
 	{
 		CallInteractionHooks();
-		if (! ByPhysics)
+		if (ByPhysics)
+		{
+			if (DisableGrabityWhenHeld) this.Rigidbody.useGravity = false;
+		}
+		else
 		{
 			this.Rigidbody.isKinematic = true;
 			foreach (var joint in GetComponents<Joint>())
@@ -30,7 +35,8 @@ public class Grabbable : IInteractable
 	}
 	public void OnGrabEnd()
 	{
-		if(! ByPhysics) this.Rigidbody.isKinematic = false;
+		if (ByPhysics) this.Rigidbody.useGravity = true;
+		else this.Rigidbody.isKinematic = false;
 	}
 
 	private void Start()
