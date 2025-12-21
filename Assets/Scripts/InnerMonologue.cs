@@ -1,3 +1,4 @@
+using MarkusSecundus.Utils.Extensions;
 using System;
 using TMPro;
 using UnityEngine;
@@ -12,6 +13,9 @@ public class InnerMonologuePlayer : MonoBehaviour
 	[SerializeField] float _bubbleDuration = 0.0f;
 	[SerializeField] float _secondsPerChar = 0.0f;
 
+	[SerializeField] UnityEvent InTheMiddle;
+	[SerializeField] float secondsSinceTheMiddle;
+
 	float? ifNonzero(float f) => f <= 0 ? null : f;
 
 	bool _didPlay = false;
@@ -23,5 +27,9 @@ public class InnerMonologuePlayer : MonoBehaviour
 			ifNonzero(_bubbleDuration),
 			ifNonzero(_secondsPerChar)
 		);
+		if(secondsSinceTheMiddle > 0f)
+		{
+			_target.InvokeWithDelay(InTheMiddle.Invoke, secondsSinceTheMiddle);
+		}
 	}
 }
