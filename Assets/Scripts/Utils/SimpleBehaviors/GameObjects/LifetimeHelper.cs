@@ -40,6 +40,7 @@ namespace MarkusSecundus.Utils.Behaviors.GameObjects
         public void SwitchActiveness()
         {
             this.gameObject.SetActive(!gameObject.activeSelf);
+
         }
     }
 }

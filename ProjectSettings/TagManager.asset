@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Toothbrush
   - Alarm
+  - BigPot
+  - BigPillow
   layers:
   - Default
   - TransparentFX
