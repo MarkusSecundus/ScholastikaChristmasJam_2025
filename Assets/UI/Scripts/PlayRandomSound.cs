@@ -15,7 +15,7 @@ public class PlayRandomSound : MonoBehaviour
     {
         while (true)
         {
-            float waitTime = Random.Range(120f, 360f);
+            float waitTime = Random.Range(60f, 180f);
 
             yield return new WaitForSeconds(waitTime);
 
