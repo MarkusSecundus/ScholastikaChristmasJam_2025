@@ -1346,6 +1346,7 @@ GameObject:
   m_Component:
   - component: {fileID: 140579204}
   - component: {fileID: 140579205}
+  - component: {fileID: 140579206}
   m_Layer: 0
   m_Name: GoToSleep1_Hook
   m_TagString: Untagged
@@ -1408,6 +1409,50 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 140579203}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 140579206}
+        m_TargetAssemblyTypeName: VolumeFader, Assembly-CSharp
+        m_MethodName: DoFadeOut
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &140579206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140579203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c28e4bde04d7fa249b2da55586a73431, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audio: {fileID: 528809107}
+  FadeDuration_seconds: 4
+  ease: 1
+  MinValue: 0
+  MaxValue: 1
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 951265952}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -3411,6 +3456,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 711ff872319dccd4194dec8ab519228e, type: 3}
+--- !u!82 &528809107 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1616871191765553259, guid: 168229c7e77b9a04e8917af0a254a2fd, type: 3}
+  m_PrefabInstance: {fileID: 2525028690114333788}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &548215611
 GameObject:
   m_ObjectHideFlags: 0
@@ -5005,7 +5055,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &842192464
 Transform:
   m_ObjectHideFlags: 0
@@ -5021,7 +5071,6 @@ Transform:
   m_Children:
   - {fileID: 1526966136}
   - {fileID: 123035492}
-  - {fileID: 16854009}
   - {fileID: 1337727449}
   - {fileID: 710054600}
   - {fileID: 1480269567}
@@ -8432,7 +8481,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1332737396}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -8580,6 +8629,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1394522117}
   - component: {fileID: 1394522118}
+  - component: {fileID: 1394522119}
   m_Layer: 0
   m_Name: M_LetsGoToSleep
   m_TagString: Untagged
@@ -8624,13 +8674,33 @@ MonoBehaviour:
       m_Calls: []
   _bubbleDuration: 0
   _secondsPerChar: 0
+--- !u!114 &1394522119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394522116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c28e4bde04d7fa249b2da55586a73431, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audio: {fileID: 0}
+  FadeDuration_seconds: 1
+  ease: 3
+  MinValue: 0
+  MaxValue: 1
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1395095555
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1836581105}
+    m_TransformParent: {fileID: 1972986560}
     m_Modifications:
     - target: {fileID: 1520022431176495923, guid: bbcdd4e6827131541b4d8272cc08c94b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10879,7 +10949,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1836581105
 Transform:
   m_ObjectHideFlags: 0
@@ -10899,7 +10969,6 @@ Transform:
   - {fileID: 1180436997}
   - {fileID: 376190229}
   - {fileID: 1957250534}
-  - {fileID: 1395095556}
   - {fileID: 1716597956}
   - {fileID: 605407662}
   - {fileID: 1814983057}
@@ -11740,7 +11809,9 @@ Transform:
   m_Children:
   - {fileID: 108464891}
   - {fileID: 862075084}
+  - {fileID: 1395095556}
   - {fileID: 1836581105}
+  - {fileID: 16854009}
   - {fileID: 842192464}
   - {fileID: 1100811323}
   m_Father: {fileID: 0}
@@ -12982,7 +13053,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 842192464}
+    m_TransformParent: {fileID: 1972986560}
     m_Modifications:
     - target: {fileID: 4695819765887065831, guid: 168229c7e77b9a04e8917af0a254a2fd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13023,6 +13094,70 @@ PrefabInstance:
     - target: {fileID: 4695819765887065831, guid: 168229c7e77b9a04e8917af0a254a2fd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375743436280337065, guid: 168229c7e77b9a04e8917af0a254a2fd, type: 3}
+      propertyPath: DistanceRange.Max
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375743436280337065, guid: 168229c7e77b9a04e8917af0a254a2fd, type: 3}
+      propertyPath: Curve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375743436280337065, guid: 168229c7e77b9a04e8917af0a254a2fd, type: 3}
+      propertyPath: Curve.m_Curve.Array.data[0].time
+      value: -0.0007247925
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375743436280337065, guid: 168229c7e77b9a04e8917af0a254a2fd, type: 3}
+      propertyPath: Curve.m_Curve.Array.data[1].time
+      value: 0.9452501
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375743436280337065, guid: 168229c7e77b9a04e8917af0a254a2fd, type: 3}
+      propertyPath: Curve.m_Curve.Array.data[2].time
+      value: 0.4407367
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375743436280337065, guid: 168229c7e77b9a04e8917af0a254a2fd, type: 3}
+      propertyPath: Curve.m_Curve.Array.data[0].value
+      value: 0.25683594
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375743436280337065, guid: 168229c7e77b9a04e8917af0a254a2fd, type: 3}
+      propertyPath: Curve.m_Curve.Array.data[1].value
+      value: 0.010029484
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375743436280337065, guid: 168229c7e77b9a04e8917af0a254a2fd, type: 3}
+      propertyPath: Curve.m_Curve.Array.data[2].value
+      value: 0.04706396
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375743436280337065, guid: 168229c7e77b9a04e8917af0a254a2fd, type: 3}
+      propertyPath: Curve.m_Curve.Array.data[0].inSlope
+      value: -0.8044258
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375743436280337065, guid: 168229c7e77b9a04e8917af0a254a2fd, type: 3}
+      propertyPath: Curve.m_Curve.Array.data[1].inSlope
+      value: -0.05017509
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375743436280337065, guid: 168229c7e77b9a04e8917af0a254a2fd, type: 3}
+      propertyPath: Curve.m_Curve.Array.data[0].outSlope
+      value: -0.8044258
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375743436280337065, guid: 168229c7e77b9a04e8917af0a254a2fd, type: 3}
+      propertyPath: Curve.m_Curve.Array.data[1].inWeight
+      value: 0.070660345
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375743436280337065, guid: 168229c7e77b9a04e8917af0a254a2fd, type: 3}
+      propertyPath: Curve.m_Curve.Array.data[1].outSlope
+      value: -0.05017509
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375743436280337065, guid: 168229c7e77b9a04e8917af0a254a2fd, type: 3}
+      propertyPath: Curve.m_Curve.Array.data[0].outWeight
+      value: 0.04772965
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375743436280337065, guid: 168229c7e77b9a04e8917af0a254a2fd, type: 3}
+      propertyPath: Curve.m_Curve.Array.data[1].outWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7786789676652917747, guid: 168229c7e77b9a04e8917af0a254a2fd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8926567371468396279, guid: 168229c7e77b9a04e8917af0a254a2fd, type: 3}
       propertyPath: m_Name
