@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using MarkusSecundus.Utils.Datastructs;
 using MarkusSecundus.Utils.Primitives;
 using MarkusSecundus.Utils.Randomness;
 using System;
@@ -31,23 +32,26 @@ public class DialogBubble : MonoBehaviour
 
 	event Action InterruptHandler;
 
-	Image[] _renderers_fld;
+	[SerializeField] Image[] _renderers_fld;
 	Image[] _renderers
 	{
 		get
 		{
-			if(_renderers_fld == null)
+			if(_initialAlphas == null)
 			{
-				_renderers_fld = GetComponentsInChildren<Image>(true);
+				_initialAlphas = new();
 				foreach (var r in _renderers_fld) _initialAlphas[r] = r.color.a;
 			}
 			return _renderers_fld;
 		}
 	}
-	Dictionary<Image, float> _initialAlphas = new();
+	Dictionary<Image, float> _initialAlphas = null;
 	private void Start()
 	{
 	}
+
+	public void StartPrintoutNoAutoclose(string text) => StartPrintout(text, false, () => { }, null, null);
+	public void StartPrintout(string text) => StartPrintout(text, true, () => { }, null, null);
 
 	public void StartPrintout(string text, bool shouldAutoclose, Action onClosed, float? durationOverride, float? charPerSecondsOverride)
 	{

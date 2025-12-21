@@ -16,6 +16,7 @@ namespace MarkusSecundus.Utils.Behaviors.Physics
     /// </summary>
     public class CallbackedTrigger : MonoBehaviour
     {
+        public bool IsOneshot = true;
         public string[] TagWhitelist;
 
         public bool ListenToTriggerEvents = true;
@@ -78,13 +79,25 @@ namespace MarkusSecundus.Utils.Behaviors.Physics
 
         bool _isTheRightTarget(Collider other) => TagWhitelist.Length <= 0 || TagWhitelist.Contains(other.tag) || (other.attachedRigidbody && TagWhitelist.Contains(other.attachedRigidbody.tag));
 
+        bool didTriggerEnter = false;
         void OnTriggerEnter(Collider other)
         {
-            if(ListenToTriggerEvents && _isTheRightTarget(other)) OnEnter?.Invoke(other);
+            if(ListenToTriggerEvents && _isTheRightTarget(other))
+            {
+                if (IsOneshot && didTriggerEnter) return;
+                didTriggerEnter = true;
+				OnEnter?.Invoke(other);
+			}
         }
+        bool didTriggerExit = false;
         void OnTriggerExit(Collider other)
         {
-            if(ListenToTriggerEvents && _isTheRightTarget(other)) OnExit?.Invoke(other);
+            if(ListenToTriggerEvents && _isTheRightTarget(other))
+            {
+                if (IsOneshot && didTriggerExit) return;
+                didTriggerExit = true;
+				OnExit?.Invoke(other);
+			}
         }
 
         private void OnCollisionEnter(Collision collision)
