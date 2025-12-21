@@ -18,11 +18,16 @@ public class VolumeFader : MonoBehaviour
     public void DoFadeOut()
     {
         foreach (var byPlayerDistance in _audio.GetComponents<VolumeByPlayerDistance>()) byPlayerDistance.enabled = false;
-        _audio.DOFade(MinValue, FadeDuration_seconds).SetEase(ease).OnComplete(OnComplete.Invoke);
+        var tw = _audio.DOFade(MinValue, FadeDuration_seconds).SetEase(ease).OnComplete(()=> { 
+            OnComplete.Invoke();
+            if (MinValue <= 0f) _audio.gameObject.SetActive(false);
+        });
     }
 
     public void DoFadeIn()
-    {
+	{
+		_audio.volume = MinValue;
+		_audio.gameObject.SetActive(true);
         _audio.DOFade(MaxValue, FadeDuration_seconds).SetEase(ease).OnComplete(OnComplete.Invoke);
     }
 }
