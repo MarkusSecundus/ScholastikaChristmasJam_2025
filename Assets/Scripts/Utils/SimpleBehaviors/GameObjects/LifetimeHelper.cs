@@ -42,5 +42,10 @@ namespace MarkusSecundus.Utils.Behaviors.GameObjects
             this.gameObject.SetActive(!gameObject.activeSelf);
 
         }
+        public void TeleportToPlacement(Transform other)
+        {
+            this.transform.position = other.transform.position;
+            this.transform.rotation = other.transform.rotation;
+        }
     }
 }
