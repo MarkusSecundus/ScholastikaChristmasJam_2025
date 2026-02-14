@@ -7542,6 +7542,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 823934070}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -16960,7 +16972,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2981360166760147722, guid: 73962e30fe1c459419ee1496b87d199b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.132
+      value: 9.103
       objectReference: {fileID: 0}
     - target: {fileID: 2981360166760147722, guid: 73962e30fe1c459419ee1496b87d199b, type: 3}
       propertyPath: m_LocalRotation.w

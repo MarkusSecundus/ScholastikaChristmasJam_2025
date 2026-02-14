@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
@@ -53,6 +54,9 @@ public class DialogBubble : MonoBehaviour
 	public void StartPrintoutNoAutoclose(string text) => StartPrintout(text, false, () => { }, null, null);
 	public void StartPrintout(string text) => StartPrintout(text, true, () => { }, null, null);
 
+
+	int _isRunning_bool = 0;
+
 	public void StartPrintout(string text, bool shouldAutoclose, Action onClosed, float? durationOverride, float? charPerSecondsOverride)
 	{
 		var endWait_seconds = durationOverride ?? this.endWait_seconds;
@@ -68,12 +72,25 @@ public class DialogBubble : MonoBehaviour
 		}
 		gameObject.SetActive(true);
 		if (lastTween != null)
-			lastTween.OnComplete(() => StartCoroutine(printoutCoroutine()));
+			lastTween.OnComplete(() =>
+			{
+				gameObject.SetActive(true);
+				StartCoroutine(printoutCoroutine());
+			}
+		);
 		else StartCoroutine(printoutCoroutine());
 
 		IEnumerator printoutCoroutine()
 		{
-			var cameraTag = new object();
+			//if(this.endWait_seconds > 99f)
+			//{
+			//	while (Interlocked.CompareExchange(ref _isRunning_bool, 1, 0) != 0)
+			//	{
+			//		// request the currently running printout to finish, but wait until it actually has stopped running
+			//		this.InterruptHandler();
+			//		yield return null;
+			//	}
+			//}
 			yield return null;
 			Debug.Log($"Initiating printout '{text}'");
 
@@ -124,6 +141,7 @@ public class DialogBubble : MonoBehaviour
 				else { }
 
 				onClosed?.Invoke();
+				_isRunning_bool = 0;
 			}
 
 			void Interrupt()

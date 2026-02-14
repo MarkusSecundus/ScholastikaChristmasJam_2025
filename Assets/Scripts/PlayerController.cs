@@ -115,9 +115,10 @@ public class PlayerController : MonoBehaviour
 			else
 			{
 				var holdPoint = _holdPoint.parent.position + (_holdPoint.position - _holdPoint.parent.position) * _currentlyBeingHeld.HoldDistanceMultiplier;
-				var moveDir = holdPoint - getGrabPoint();
+				var grabPoint = getGrabPoint();
+				var moveDir = holdPoint - grabPoint;
 				if(_currentlyBeingHeld.ByPhysics)
-					_currentlyBeingHeld.Rigidbody.SteerToVelocity(moveDir, ForceHoldingForce * _currentlyBeingHeld.HoldForceMultiplier, ForceHoldingMode);
+					_currentlyBeingHeld.Rigidbody.SteerToVelocityAtPoint(moveDir, grabPoint, ForceHoldingForce * _currentlyBeingHeld.HoldForceMultiplier, ForceHoldingMode);
 				else
 					_currentlyBeingHeld.transform.position += moveDir * HoldingForce * delta;
 			}

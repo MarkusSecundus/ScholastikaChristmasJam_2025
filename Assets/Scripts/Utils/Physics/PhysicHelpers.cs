@@ -66,6 +66,13 @@ namespace MarkusSecundus.Utils.Physics
             self.AddForce(toApply, mode);
         }
 
+        public static void SteerToVelocityAtPoint(this Rigidbody self, Vector3 velocity, Vector3 applicationPoint, float maxDelta = float.MaxValue, ForceMode mode = ForceMode.VelocityChange)
+        {
+            var toApply = velocity - self.linearVelocity;
+            toApply = Vector3.ClampMagnitude(toApply, maxDelta);
+            self.AddForceAtPosition(toApply, applicationPoint, mode);
+        }
+
         public static void SteerToVelocity(this Rigidbody2D self, Vector2 velocity, float maxDelta = float.MaxValue, ForceMode2D mode = ForceMode2D.Impulse)
         {
             var toApply = velocity - self.linearVelocity;
