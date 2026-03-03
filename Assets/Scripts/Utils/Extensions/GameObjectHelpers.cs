@@ -227,7 +227,16 @@ namespace MarkusSecundus.Utils.Extensions
                     Message = parsed.Groups["MessageName"].Value,
                 };
             }
-        }
-    }
+
+		}
+		public static void ForeachDescendant(this Transform self, Action<Transform> iterationBody)
+		{
+			iterationBody(self);
+			foreach (Transform t in self)
+			{
+				t.ForeachDescendant(iterationBody);
+			}
+		}
+	}
 
 }

@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 		public float WalkSpeed = 1f;
 		public float RotateSpeed = 1f;
 		public float LookUpDownSpeed = 1f;
+		public Interval<Vector3> RotationClampEuler = new Interval<Vector3>(new Vector3(-360f, -360f, -360f), new Vector3(360f, 360f, 360f));
 	}
 
 	public Transform CameraToUse;
@@ -66,9 +67,11 @@ public class PlayerController : MonoBehaviour
 
 		_char.Move(targetMovement);
 		_char.transform.localRotation *= Quaternion.AngleAxis(targetHorizontalRotation, _rotationBase);
-
+		
 		var camRotation = CameraToUse.localRotation.eulerAngles;
 		camRotation.x -= targetVerticalRotation;
+		camRotation = camRotation.ClampEuler(Tweaks.RotationClampEuler);
+		//Debug.Log($"Rotation: {camRotation}", this);
 		CameraToUse.localRotation = Quaternion.Euler(camRotation);
 	}
 
@@ -108,7 +111,7 @@ public class PlayerController : MonoBehaviour
 		{
 			if (_currentlyBeingHeld.WhenHeld? (!IsInteractionKeyBeingPressed) : IsInteractionKeyPressed)
 			{
-				_currentlyBeingHeld.OnGrabEnd();
+				_currentlyBeingHeld.OnGrabEnd(this);
 				_currentlyBeingHeld.Rigidbody.AddForce(raycastDirection * ThrowForce * _currentlyBeingHeld.ThrowForceMultiplier, ForceMode.Impulse);
 				_currentlyBeingHeld = null;
 			}
@@ -138,7 +141,7 @@ public class PlayerController : MonoBehaviour
 					else if (interactable is Grabbable grabbable)
 					{
 						_currentlyBeingHeld = grabbable;
-						_currentlyBeingHeld.OnGrabStart();
+						_currentlyBeingHeld.OnGrabStart(this);
 						_hitPointLocal = _currentlyBeingHeld.transform.GlobalToLocal(hitInfo.point);
 					}
 				}

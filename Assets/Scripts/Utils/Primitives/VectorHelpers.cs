@@ -453,7 +453,15 @@ namespace MarkusSecundus.Utils.Primitives
         public static Vector3 ClampMagnitude(this Vector3 self, Interval<float> magnitudeRange) => self.ClampMagnitude(magnitudeRange.Min, magnitudeRange.Max);
 
 
-
+        public static Vector3 NormalizeEuler(this Vector3 self)
+		{
+			float Fix(float f)
+			{
+				f %= 360;
+				return f >= 180f ? f - 360 : f;
+			}
+            return new Vector3(Fix(self.x), Fix(self.y), Fix(self.z));
+		}
 
         /// <summary>
         /// Clamps vector interpreted as degree euler angles in an euler angles interval
@@ -463,8 +471,7 @@ namespace MarkusSecundus.Utils.Primitives
         /// <returns>Clamped euler angle</returns>
         public static Vector3 ClampEuler(this Vector3 self, Interval<Vector3> i)
         {
-            float Fix(float f) => (f %= 360) >= 180f ? f - 360 : f;
-            return new Vector3(Fix(self.x), Fix(self.y), Fix(self.z)).ClampFields(i);
+            return self.NormalizeEuler().ClampFields(i);
 
             //TODO: Fix this so that it handles correctly intervals like <180°; 210°> aka. <180°;-150°> etc.
 
