@@ -5,6 +5,7 @@ using MarkusSecundus.Utils.Physics;
 using MarkusSecundus.Utils.Primitives;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -59,8 +60,10 @@ public class PlayerController : MonoBehaviour
 	Vector3 targetMovement = Vector3.zero;
 	void DoHandleInputs(float delta)
 	{
-		targetHorizontalRotation = Input.GetAxis("Mouse X") * Tweaks.RotateSpeed * delta;
-		targetVerticalRotation = Input.GetAxis("Mouse Y") * Tweaks.LookUpDownSpeed * delta;
+		
+
+		targetHorizontalRotation = (Input.GetAxis("Mouse X") + (Gamepad.current?.rightStick?.x?.value ?? 0f)) * Tweaks.RotateSpeed * delta;
+		targetVerticalRotation = (Input.GetAxis("Mouse Y") + (Gamepad.current?.rightStick?.y?.value ?? 0f)) * Tweaks.LookUpDownSpeed * delta;
 		targetMovement = MovementDirectionBases.WalkForwardBackwardBase * Input.GetAxis("Vertical") * Tweaks.WalkSpeed * delta;
 		targetMovement += MovementDirectionBases.StrafeLeftRightBase * Input.GetAxis("Horizontal") * Tweaks.WalkSpeed * delta;
 		targetMovement += _gravity;
@@ -88,9 +91,9 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] float ForceHoldingForce = 1f;
 	[SerializeField] ForceMode ForceHoldingMode = ForceMode.Force;
 
-	bool IsInteractionKeyPressed => Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.Mouse0);
-	bool IsInteractionKeyBeingPressed => Input.GetKey(KeyCode.F) || Input.GetKey(KeyCode.Mouse0);
-	bool IsCrouchKeyPressed => Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.C);
+	bool IsInteractionKeyPressed => Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.Mouse0) || (Gamepad.current?.aButton?.wasPressedThisFrame == true) || (Gamepad.current?.rightStickButton?.wasPressedThisFrame == true);
+	bool IsInteractionKeyBeingPressed => Input.GetKey(KeyCode.F) || Input.GetKey(KeyCode.Mouse0) || (Gamepad.current?.aButton?.isPressed == true) || (Gamepad.current?.rightStickButton?.isPressed == true);
+	bool IsCrouchKeyPressed => Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.C) || (Gamepad.current?.leftStickButton?.isPressed == true);
 
 	Grabbable _currentlyBeingHeld;
 

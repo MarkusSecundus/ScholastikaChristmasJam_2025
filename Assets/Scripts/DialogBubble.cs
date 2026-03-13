@@ -22,7 +22,7 @@ public class DialogBubble : MonoBehaviour
 	[SerializeField] AudioClip[] typingSounds;
 	[SerializeField] int typingSoundsInterval = 5;
 
-	[SerializeField] KeyCode[] skipPrintoutKeys = new KeyCode[] { KeyCode.Space, KeyCode.Mouse0 };
+	[SerializeField] KeyCode[] skipPrintoutKeys = new KeyCode[] { KeyCode.Space, KeyCode.Mouse0, KeyCode.JoystickButton0,KeyCode.JoystickButton1,KeyCode.JoystickButton2,KeyCode.JoystickButton3,KeyCode.JoystickButton4,KeyCode.JoystickButton5,KeyCode.JoystickButton6,KeyCode.JoystickButton7,KeyCode.JoystickButton8,KeyCode.JoystickButton9,KeyCode.JoystickButton10,KeyCode.JoystickButton11,KeyCode.JoystickButton12,KeyCode.JoystickButton13 };
 
 	[SerializeField] TMP_Text _textField_fld;
 	TMP_Text _textField => _textField_fld ??= GetComponentInChildren<TMP_Text>();
@@ -54,8 +54,6 @@ public class DialogBubble : MonoBehaviour
 	public void StartPrintoutNoAutoclose(string text) => StartPrintout(text, false, () => { }, null, null);
 	public void StartPrintout(string text) => StartPrintout(text, true, () => { }, null, null);
 
-
-	int _isRunning_bool = 0;
 
 	public void StartPrintout(string text, bool shouldAutoclose, Action onClosed, float? durationOverride, float? charPerSecondsOverride)
 	{
@@ -141,7 +139,6 @@ public class DialogBubble : MonoBehaviour
 				else { }
 
 				onClosed?.Invoke();
-				_isRunning_bool = 0;
 			}
 
 			void Interrupt()
