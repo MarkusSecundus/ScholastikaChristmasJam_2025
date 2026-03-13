@@ -6605,6 +6605,18 @@ MonoBehaviour:
           m_StringArgument: Oh, I can hear it... somewhere
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 823934070}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Oh, I can hear it... somewhere
+          m_BoolArgument: 1
+        m_CallState: 2
   DelaySeconds: 2
   OnStartup: 0
 --- !u!4 &720146825 stripped
@@ -7571,7 +7583,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &823934071
 Transform:
   m_ObjectHideFlags: 0
@@ -9466,6 +9478,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseMenu(canvas)
       objectReference: {fileID: 0}
+    - target: {fileID: 1026308403665372570, guid: 96ade0f1d51e8d04ba0501992e122cf8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832809666728248472, guid: 96ade0f1d51e8d04ba0501992e122cf8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832809666728248472, guid: 96ade0f1d51e8d04ba0501992e122cf8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832809666728248472, guid: 96ade0f1d51e8d04ba0501992e122cf8, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2606585927484907419, guid: 96ade0f1d51e8d04ba0501992e122cf8, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 665.6572
+      objectReference: {fileID: 0}
+    - target: {fileID: 2606585927484907419, guid: 96ade0f1d51e8d04ba0501992e122cf8, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 92.2335
+      objectReference: {fileID: 0}
+    - target: {fileID: 2606585927484907419, guid: 96ade0f1d51e8d04ba0501992e122cf8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 342.3286
+      objectReference: {fileID: 0}
+    - target: {fileID: 2606585927484907419, guid: 96ade0f1d51e8d04ba0501992e122cf8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 38
+      objectReference: {fileID: 0}
     - target: {fileID: 5413628157730585407, guid: 96ade0f1d51e8d04ba0501992e122cf8, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -9546,6 +9590,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6223019255991556025, guid: 96ade0f1d51e8d04ba0501992e122cf8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993673662850096893, guid: 96ade0f1d51e8d04ba0501992e122cf8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993673662850096893, guid: 96ade0f1d51e8d04ba0501992e122cf8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663997536498155115, guid: 96ade0f1d51e8d04ba0501992e122cf8, type: 3}
+      propertyPath: m_MaxValue
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9072757741029254338, guid: 96ade0f1d51e8d04ba0501992e122cf8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9556,6 +9620,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1026308403665372570, guid: 96ade0f1d51e8d04ba0501992e122cf8, type: 3}
   m_PrefabInstance: {fileID: 968646258}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &968646260 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7663997536498155115, guid: 96ade0f1d51e8d04ba0501992e122cf8, type: 3}
+  m_PrefabInstance: {fileID: 968646258}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
 --- !u!4 &974167255 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4687141990637640682, guid: 8ecb926c8e567664ca42110cd5ce1eaf, type: 3}
@@ -18967,6 +19042,10 @@ PrefabInstance:
       propertyPath: pauseMenuCanvas
       value: 
       objectReference: {fileID: 968646259}
+    - target: {fileID: 9139464774668744086, guid: a55a3e31e9b82c645a47512291f34608, type: 3}
+      propertyPath: _lookSensitivitySlider
+      value: 
+      objectReference: {fileID: 968646260}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22090,6 +22169,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8765046576688795063, guid: 65fc218d39a76db4aa63ac9695fd1fb6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4213383239861082661}
+    - targetCorrespondingSourceObject: {fileID: 8765046576688795063, guid: 65fc218d39a76db4aa63ac9695fd1fb6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4213383239861082666}
   m_SourcePrefab: {fileID: 100100000, guid: 65fc218d39a76db4aa63ac9695fd1fb6, type: 3}
 --- !u!1 &4213383239861082655 stripped
 GameObject:
@@ -22205,6 +22287,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b504d05487a4934383c3617ba8c7669, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4213383239861082666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4213383239861082655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 892ea403925902341a60a32b46cccbaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UtilAssembly::MarkusSecundus.Utils.Behaviors.GameObjects.TagSearchable
 --- !u!1001 &4712865497145203045
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -16,6 +16,12 @@ public class PlayerController : MonoBehaviour
 		public float RotateSpeed = 1f;
 		public float LookUpDownSpeed = 1f;
 		public Interval<Vector3> RotationClampEuler = new Interval<Vector3>(new Vector3(-360f, -360f, -360f), new Vector3(360f, 360f, 360f));
+
+		public Vector2 TotalLookSpeed
+		{
+			get => new Vector2(RotateSpeed, LookUpDownSpeed);
+			set => (RotateSpeed, LookUpDownSpeed) = (value.x, value.y);
+		}
 	}
 
 	public Transform CameraToUse;
@@ -93,7 +99,7 @@ public class PlayerController : MonoBehaviour
 
 	bool IsInteractionKeyPressed => Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.Mouse0) || (Gamepad.current?.aButton?.wasPressedThisFrame == true) || (Gamepad.current?.rightStickButton?.wasPressedThisFrame == true);
 	bool IsInteractionKeyBeingPressed => Input.GetKey(KeyCode.F) || Input.GetKey(KeyCode.Mouse0) || (Gamepad.current?.aButton?.isPressed == true) || (Gamepad.current?.rightStickButton?.isPressed == true);
-	bool IsCrouchKeyPressed => Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.C) || (Gamepad.current?.leftStickButton?.isPressed == true);
+	bool IsCrouchKeyPressed => Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.C) || (Gamepad.current?.leftStickButton?.isPressed == true); 
 
 	Grabbable _currentlyBeingHeld;
 
